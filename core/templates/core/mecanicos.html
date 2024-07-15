@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block principal %}
+ <!-- client section start -->
+ <div class="client_section layout_padding">
+   <div class="container">
+       <div id="custom_slider" class="carousel slide" data-ride="carousel">
+           <div class="carousel-inner">
+               {% for aux in lista %}
+               <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                   <div class="row justify-content-center">
+                       <div class="col-md-10">
+                           <h1 class="client_taital text-center">Nuestros mecánicos</h1>
+                           <div class="client_section_2">
+                               <div class="row justify-content-center">
+                                   <div class="col-md-8">
+                                       <div class="client_taital_box text-center p-4">
+                                           <div class="client_img mb-3">
+                                               <img src="{{ aux.imagen.url }}" alt="Imagen de {{ aux.nombre }}" class="img-fluid">
+                                           </div>
+                                           <h3 class="moark_text">{{ aux.nombre }} {{ aux.apellido }}</h3>
+                                           <p class="client_text">{{ aux.tipo.descripcion }}</p>
+                                       </div>
+                                       <div class="quick_icon mt-3">
+                                           <img src="{% static 'core/images/quick-icon.png' %}" class="img-fluid">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>   
+                   </div>
+               </div>
+               {% endfor %}
+           </div>
+           <a class="carousel-control-prev" href="#custom_slider" role="button" data-slide="prev">
+               <i class="fa fa-angle-left"></i>
+           </a>
+           <a class="carousel-control-next" href="#custom_slider" role="button" data-slide="next">
+               <i class="fa fa-angle-right"></i>
+           </a>
+       </div>
+   </div>
+</div>
+ <!-- client section end -->
+{% endblock %}

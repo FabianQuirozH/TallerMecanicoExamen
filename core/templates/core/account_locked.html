@@ -1,0 +1,22 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block principal %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card text-center p-4 mt-5 mb-5">
+                <form action="" method="POST" class="d-flex flex-column align-items-center">
+                    {% csrf_token %}
+                    <h1>Tu cuenta ha sido bloqueada por muchos intentos fallidos. Debes esperar 1 minuto antes de intentar nuevamente.</h1>
+                    <h1>SORRY :(</h1>
+
+                    <div class="mt-5"> <!-- Duplicando la separación de arriba -->
+                        <a href="{% url 'index' %}" class="btn btn-primary">Ir a Home</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

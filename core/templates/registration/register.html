@@ -1,0 +1,61 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block principal %}
+<style>
+    body {
+        background: url('https://img.freepik.com/foto-gratis/fondo-digital-futurista-azul-oscuro-degradado_53876-102619.jpg?size=626&ext=jpg') no-repeat center center fixed;
+        background-size: cover;
+    }
+    .card {
+        background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+        border-radius: 15px; /* Rounded corners */
+    }
+</style>
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="row w-100">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card shadow-sm rounded">
+                <div class="card-body">
+                    <h2 class="text-center">Registro</h2>
+                    <hr>
+                    <!-- Aquí se muestran los mensajes en un recuadro grande -->
+                    {% if messages %}
+                        <div class="message-box w-100 mb-4">
+                            {% for message in messages %}
+                                <div class="alert alert-{{ message.tags }} alert-dismissible fade show d-flex align-items-center" role="alert">
+                                    {% if message.tags == 'success' %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; margin-right: 10px;" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm3.97-7.97a.75.75 0 0 0-1.08-1.04l-3.466 3.588-1.78-1.789a.75.75 0 0 0-1.08 1.04l2.5 2.5a.75.75 0 0 0 1.08 0l4-4z"/>
+                                        </svg>
+                                    {% elif message.tags == 'error' %}
+                                        <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 24px; margin-right: 10px;" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                                            <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zM4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                        </svg>
+                                    {% endif %}
+                                    {{ message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <!-- Fin de los mensajes -->
+                    <form action="" method="POST" class="d-flex flex-column align-items-center text-center">
+                        {% csrf_token %}
+                        <div class="form-group w-75 mb-3">
+                            {{ form|crispy }}
+                        </div>
+                        <div class="d-flex justify-content-between w-75">
+                            <a href="{% url 'index' %}" class="btn btn-primary">Ir al home</a>
+                            <a href="{% url 'login' %}" class="btn btn-secondary">Iniciar sesión</a>
+                            <input class="btn btn-danger" type="submit" value="Registrarse">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

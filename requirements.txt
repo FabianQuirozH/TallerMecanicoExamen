@@ -1,0 +1,23 @@
+crispy-bootstrap5
+django-crispy-forms
+crispy-bootstrap4
+django-axes
+django-recaptcha
+django-simple-captcha
+django-rest-framework
+django-admin-confirm
+pillow
+psycopg2
+django-multi-captcha-admin
+django-simple-captcha
+reportlab
+
+
+
+
+#pip install -r requirements.txt
+
+
+#CONTRASEÑA BASE DE DATOS: Estrellafc_010.
+
+#superuser: admin y contra:admin1

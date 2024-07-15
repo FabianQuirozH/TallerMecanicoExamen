@@ -1,0 +1,39 @@
+{% extends 'core/baseadmin.html' %}
+{% load crispy_forms_tags %}
+{% load static %}   
+
+{% block principal %}
+<div class="container d-flex justify-content-center align-items-center py-5" style="min-height: 5vh;"></div>
+    <div class="card shadow rounded-3" >
+        <div class="card-body" >
+            <h2 class="card-title text-center mb-4">Editar Empleado</h2>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ forms.nombre|as_crispy_field }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.apellido|as_crispy_field }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.edad|as_crispy_field }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.imagen|as_crispy_field }}
+                </div>
+                <div class="mb-3">
+                    {{ forms.tipo|as_crispy_field }}
+                </div>
+                <div class="text-center">
+                    <button type="reset" class="btn btn-danger me-3">Limpiar</button>
+                    <button type="submit" class="btn btn-success">Modificar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<p class="text-center">{{ message }}</p>
+
+{% endblock %}
+
+

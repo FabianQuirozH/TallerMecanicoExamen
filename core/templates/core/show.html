@@ -1,0 +1,32 @@
+{% extends 'core/baseadmin.html' %}
+{% load static %}
+
+{% block principal %}
+<section class="row my-5 container">
+    <div class="col-10 mx-auto">
+        <div class="row border mb-4">
+            <!-- Imagen -->
+            <div class="col-md-5 p-0">
+                <img src="{{ MEDIA_URL }}{{ productos.imagen.url }}" alt="{{ productos.titulo }}" class="img-fluid w-100">
+            </div>
+            <!-- Texto -->
+            <div class="col-md-7 p-4 d-flex flex-column justify-content-between">
+                <div class="detalle-producto-content__text">
+                    <h1 class="display-4 text-capitalize">{{ productos.titulo }}</h1>
+                    <p>{{ productos.descripcion }}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="m-0">
+                        <strong>Precio:</strong> ${{ productos.precio }}
+                    </p>
+                    <form action="{% url 'carrito_save' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="producto_id" value="{{ productos.id }}">
+                        <button type="submit" class="btn btn-success">Agregar al carrito</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
